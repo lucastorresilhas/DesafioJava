@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.totvs.desafio.dtos.FazendaRequest;
 import br.com.totvs.desafio.dtos.FazendaResponse;
+import br.com.totvs.desafio.models.Fazenda;
 import br.com.totvs.desafio.services.FazendaService;
 
 @RestController
@@ -29,13 +30,13 @@ public class FazendaController {
 	}
 	
 	@GetMapping("/{id}")
-	public FazendaResponse buscarFazenda(@PathVariable Long id) {
-		return null;
+	public Fazenda buscarFazenda(@PathVariable Long id) {
+		return fazendaService.buscarFazenda(id);
 	}
 	
 	@PostMapping
 	public void criarFazenda(@RequestBody FazendaRequest fazendaRequest) {
-
+		this.fazendaService.cadastrarFazenda(fazendaRequest);
 	}
 	
 	@PutMapping("/{id}")
